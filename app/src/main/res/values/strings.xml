@@ -8,4 +8,7 @@
     <string name="submit">Submit</string>
     <string name="take_photo">Take Photo</string>
     <string name="fakegps_message">Not a valid location or using fake GPS</string>
+    <string name="take_photo_validation">Please take store picture</string>
+    <string name="name_validation">Please input store name</string>
+    <string name="success">Succeeded</string>
 </resources>

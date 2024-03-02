@@ -3,10 +3,12 @@ package com.roys.storelocation.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.roys.storelocation.R
 import com.roys.storelocation.util.Constants
 import com.roys.storelocation.databinding.StoreDetailActivityBinding
 import com.roys.storelocation.model.StoreEntity
@@ -41,6 +43,16 @@ class StoreDetailActivity: AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[StoreViewModel::class.java]
 
+        viewModel.message.observe(this) {
+            it.getContentIfNotHandled()?.let { message ->
+                if(message.asString(this) == getString(R.string.success)){
+                    finish()
+                }else{
+                    Toast.makeText(this, message.asString(this), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
         initView()
     }
 
@@ -58,8 +70,9 @@ class StoreDetailActivity: AppCompatActivity() {
                     }
                 }
                 if (storeEntity != null) {
-                    viewModel.insert(storeEntity)
-                    finish()
+                    viewModel.save(storeEntity)
+                }else{
+                    Toast.makeText(this@StoreDetailActivity, getString(R.string.take_photo_validation), Toast.LENGTH_LONG).show()
                 }
             }
         }
