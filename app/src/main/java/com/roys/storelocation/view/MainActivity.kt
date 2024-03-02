@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel : StoreViewModel
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter:StoreAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,11 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView(){
         with(binding){
             rvHome.layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = StoreAdapter()
+            rvHome.adapter = adapter
             viewModel.stores.observe(this@MainActivity, Observer {
-                rvHome.adapter = StoreAdapter(it)
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
             })
             floatingActionButton.setOnClickListener {
                 startActivity(Intent(this@MainActivity, StoreDetailActivity::class.java))

@@ -10,7 +10,9 @@ import com.roys.storelocation.util.AppTools
 import com.roys.storelocation.databinding.StoreItemBinding
 import com.roys.storelocation.model.StoreEntity
 
-class StoreAdapter(private val itemList: List<StoreEntity>): RecyclerView.Adapter<StoreViewHolder>() {
+class StoreAdapter: RecyclerView.Adapter<StoreViewHolder>() {
+    private val itemList = ArrayList<StoreEntity>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
         val binding = StoreItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -25,7 +27,10 @@ class StoreAdapter(private val itemList: List<StoreEntity>): RecyclerView.Adapte
         holder.bind(itemList[position])
     }
 
-
+    fun setList(storeEntityList: List<StoreEntity>){
+        itemList.clear()
+        itemList.addAll(storeEntityList)
+    }
 }
 
 class StoreViewHolder(private val binding: StoreItemBinding, private val context: Context): RecyclerView.ViewHolder(binding.root){
