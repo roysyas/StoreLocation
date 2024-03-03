@@ -9,10 +9,10 @@ import androidx.room.Query
 @Dao
 interface StoreDao {
 
-    @Query("SELECT * FROM STORE_TABLE ORDER BY ID DESC")
+    @Query("SELECT * FROM STORE_DATA_TABLE ORDER BY ID DESC")
     fun getAllStore(): LiveData<List<StoreEntity>>
 
-    @Query("SELECT * FROM STORE_TABLE WHERE ID = :id")
+    @Query("SELECT * FROM STORE_DATA_TABLE WHERE ID = :id")
     fun getStore(id: Long): LiveData<StoreEntity>
 
     @Insert
@@ -21,6 +21,6 @@ interface StoreDao {
     @Delete
     suspend fun delete(storeEntity: StoreEntity)
 
-    @Query("DELETE FROM STORE_TABLE")
+    @Query("DELETE FROM STORE_DATA_TABLE")
     suspend fun deleteAll()
 }
