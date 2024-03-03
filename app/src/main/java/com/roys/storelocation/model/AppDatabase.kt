@@ -11,6 +11,8 @@ import androidx.room.RoomDatabase
     version = 2,
     exportSchema = true,
     autoMigrations = [AutoMigration(from = 1, to = 2)]
+    //NEXT migration [AutoMigration(from = 1, to = 2), AutoMigration(from = 2, to = 3)]
+    //OR just [AutoMigration(from = 2, to = 3)]
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract fun storeDao() : StoreDao
