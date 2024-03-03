@@ -1,0 +1,77 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "531914105a929c3618027047d2f11c0a",
+    "entities": [
+      {
+        "tableName": "STORE_TABLE",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ID` INTEGER PRIMARY KEY AUTOINCREMENT, `NAME` TEXT, `STORELAT` REAL NOT NULL, `STORELON` REAL NOT NULL, `USERLAT` REAL NOT NULL, `USERLON` REAL NOT NULL, `IMAGE` TEXT, `EMAIL` TEXT NOT NULL DEFAULT 'NO EMAIL')",
+        "fields": [
+          {
+            "fieldPath": "ID",
+            "columnName": "ID",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "NAME",
+            "columnName": "NAME",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "STORELAT",
+            "columnName": "STORELAT",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "STORELON",
+            "columnName": "STORELON",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "USERLAT",
+            "columnName": "USERLAT",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "USERLON",
+            "columnName": "USERLON",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "IMAGE",
+            "columnName": "IMAGE",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "EMAIL",
+            "columnName": "EMAIL",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'NO EMAIL'"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "ID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '531914105a929c3618027047d2f11c0a')"
+    ]
+  }
+}

@@ -11,4 +11,6 @@
     <string name="take_photo_validation">Please take store picture</string>
     <string name="name_validation">Please input store name</string>
     <string name="success">Succeeded</string>
+    <string name="store_email">store email</string>
+    <string name="email_validation">Please input valid email</string>
 </resources>

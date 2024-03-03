@@ -65,8 +65,16 @@ class StoreDetailActivity: AppCompatActivity() {
             btnSubmit.setOnClickListener {
                 val storeEntity = lat?.let { it1 ->
                     lng?.let { it2 ->
-                        StoreEntity(null, sheetName.text.toString(),
-                            it1, it2, it1, it2, imageUri.toString())
+                        StoreEntity(
+                            null,
+                            sheetName.text.toString(),
+                            it1,
+                            it2,
+                            it1,
+                            it2,
+                            imageUri.toString(),
+                            sheetEmail.text.toString()
+                        )
                     }
                 }
                 if (storeEntity != null) {

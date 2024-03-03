@@ -1,5 +1,6 @@
 package com.roys.storelocation.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -12,5 +13,7 @@ data class StoreEntity(
     val STORELON : Double,
     val USERLAT : Double,
     val USERLON : Double,
-    val IMAGE: String? = null
+    val IMAGE: String? = null,
+    @ColumnInfo(defaultValue = "NO EMAIL")
+    val EMAIL: String
 )

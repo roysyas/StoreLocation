@@ -1,5 +1,6 @@
 package com.roys.storelocation.viewmodel
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,8 +29,10 @@ class StoreViewModel @Inject constructor(private val repository: StoreRepository
     }
 
     fun save(storeEntity: StoreEntity){
-        if(storeEntity.NAME?.isEmpty() == true){
+        if(storeEntity.NAME?.isEmpty() == true) {
             statusMessage.value = Event(StringValue.StringResource(R.string.name_validation))
+        }else if(Patterns.EMAIL_ADDRESS.matcher(storeEntity.EMAIL).matches().not()){
+            statusMessage.value = Event(StringValue.StringResource(R.string.email_validation))
         }else{
             statusMessage.value = Event(StringValue.StringResource(R.string.success))
             insert(storeEntity)
